@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import Profile from "./Profile";
 import Search from "./Search";
 import Card from "./Card";
@@ -7,7 +7,7 @@ import Transaction from "./Transaction";
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Profile />
         <Search />
@@ -15,14 +15,15 @@ export default function HomeScreen() {
       <Card />
       <ActionIcons />
       <Transaction />
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: "colum",
+    flexGrow: 1,
+    flexDirection: "column",
+    backgroundColor: "white",
   },
   header: {
     flexDirection: "row",
