@@ -5,16 +5,21 @@ import Card from "./Card";
 import ActionIcons from "./ActionIcons";
 import Transaction from "./Transaction";
 
-export default function HomeScreen() {
+export default function HomeScreen({ isEnabled }) {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView
+      contentContainerStyle={[
+        styles.container,
+        { backgroundColor: isEnabled ? "rgba(0, 0, 0, 0.9)" : "white" },
+      ]}
+    >
       <View style={styles.header}>
-        <Profile />
-        <Search />
+        <Profile isEnabled={isEnabled} />
+        <Search isEnabled={isEnabled} />
       </View>
       <Card />
-      <ActionIcons />
-      <Transaction />
+      <ActionIcons isEnabled={isEnabled} />
+      <Transaction isEnabled={isEnabled} />
     </ScrollView>
   );
 }
