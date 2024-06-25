@@ -2,31 +2,72 @@ import { FlatList, Image, Text, View, StyleSheet } from "react-native";
 
 import { transactionData } from "../Data/TransactionData";
 
-export default function Transaction() {
+export default function Transaction({ isEnabled }) {
+  const imagesWithWhiteTint = [
+    require("./../assets/apple.png"),
+    require("./../assets/moneyTransfer.png"),
+  ];
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.headings}>
-        <Text style={styles.transaction}>Transaction</Text>
+        <Text
+          style={[
+            styles.transaction,
+            { color: isEnabled ? "white" : "#3a3a3a" },
+          ]}
+        >
+          Transaction
+        </Text>
         <Text style={styles.seeAll}>See All</Text>
       </View>
       <FlatList
         data={transactionData}
         renderItem={({ item }) => (
           <View style={styles.container}>
-            <View style={styles.imageContainer}>
-              <Image style={styles.image} source={item.image} />
+            <View
+              style={[
+                styles.imageContainer,
+                {
+                  backgroundColor: isEnabled
+                    ? "rgba(75, 60, 153, 0.1)"
+                    : "#E5E5E5",
+                },
+              ]}
+            >
+              <Image
+                style={[
+                  styles.image,
+                  isEnabled &&
+                    imagesWithWhiteTint.includes(item.image) && {
+                      tintColor: "white",
+                    },
+                ]}
+                source={item.image}
+              />
             </View>
             <View style={styles.brand}>
-              <Text style={styles.brandName}>{item.brandName}</Text>
+              <Text
+                style={[
+                  styles.brandName,
+                  { color: isEnabled ? "white" : "#2e2e2e" },
+                ]}
+              >
+                {item.brandName}
+              </Text>
               <Text style={styles.brandAction}>{item.brandAction}</Text>
             </View>
             <View style={styles.costContainer}>
               <Text
                 style={[
                   styles.cost,
-                  item.cost.startsWith("-")
-                    ? styles.negativeCost
-                    : styles.positiveCost,
+                  isEnabled
+                    ? item.cost.startsWith("-")
+                      ? { color: "white" }
+                      : { color: styles.positiveCost.color }
+                    : item.cost.startsWith("-")
+                    ? { color: styles.negativeCost.color }
+                    : { color: styles.positiveCost.color },
                 ]}
               >
                 {item.cost}
@@ -42,7 +83,7 @@ export default function Transaction() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    top: 50,
+    top: 90,
     left: 18,
     paddingBottom: 100,
   },
@@ -55,7 +96,6 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontFamily: "sans-serif",
     fontWeight: "bold",
-    color: "#3a3a3a",
   },
   seeAll: {
     fontSize: 22,
@@ -71,7 +111,6 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: "#E5E5E5",
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
@@ -90,7 +129,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     fontFamily: "sans-serif",
-    color: "#2e2e2e",
   },
   brandAction: {
     fontFamily: "sans-serif",

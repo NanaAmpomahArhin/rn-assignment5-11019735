@@ -1,18 +1,35 @@
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { actionIcons } from "../Data/ActionIconsData";
 
-export default function ActionIcons() {
+export default function ActionIcons({ isEnabled }) {
   return (
     <View style={styles.wrapper}>
       <FlatList
         data={actionIcons}
         renderItem={({ item }) => (
           <View style={styles.imageAndNameContainer}>
-            <View style={styles.imageContainer}>
-              <Image style={styles.image} source={item.image} />
+            <View
+              style={[
+                styles.imageContainer,
+                {
+                  backgroundColor: isEnabled
+                    ? "rgba(75, 60, 153, 0.1)"
+                    : "#E5E5E5",
+                },
+              ]}
+            >
+              <Image
+                style={[
+                  styles.image,
+                  { tintColor: isEnabled ? "white" : "gray" },
+                ]}
+                source={item.image}
+              />
             </View>
             <View>
-              <Text style={styles.iconName}>{item.name}</Text>
+              <Text style={[styles.iconName, { color: "gray" }]}>
+                {item.name}
+              </Text>
             </View>
           </View>
         )}
@@ -27,7 +44,7 @@ export default function ActionIcons() {
 const styles = StyleSheet.create({
   wrapper: {
     left: 0,
-    top: 60,
+    top: 100,
   },
   imageAndNameContainer: {
     width: 100,

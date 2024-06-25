@@ -1,13 +1,20 @@
 import { View, StyleSheet, Text } from "react-native";
 import ProfilePicture from "./ProfilePicture";
 
-export default function Profile() {
+export default function Profile({ isEnabled }) {
   return (
     <View style={styles.wrapper}>
       <ProfilePicture />
       <View style={styles.welcomeNoteWrapper}>
         <Text style={styles.welcome}>Welcome back,</Text>
-        <Text style={styles.userNameContainer}>Eric Atsu</Text>
+        <Text
+          style={[
+            styles.userNameContainer,
+            { color: isEnabled ? "white" : "black" },
+          ]}
+        >
+          Eric Atsu
+        </Text>
       </View>
     </View>
   );
@@ -15,7 +22,7 @@ export default function Profile() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    top: 0,
+    top: 50,
     left: 18,
     flexDirection: "row",
     width: "300",
