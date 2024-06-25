@@ -15,7 +15,7 @@ export default function Profile() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    top: 40,
+    top: 0,
     left: 18,
     flexDirection: "row",
     width: "300",

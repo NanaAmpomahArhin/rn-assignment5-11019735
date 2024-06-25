@@ -10,7 +10,7 @@ export default function Card() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    top: 80,
+    top: 30,
     left: 12,
   },
 });

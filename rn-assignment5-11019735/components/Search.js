@@ -10,7 +10,7 @@ export default function Search() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    top: 40,
+    top: 0,
     left: 135,
     width: 50,
     height: 50,

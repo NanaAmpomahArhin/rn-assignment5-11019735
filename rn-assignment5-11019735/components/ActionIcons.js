@@ -27,7 +27,7 @@ export default function ActionIcons() {
 const styles = StyleSheet.create({
   wrapper: {
     left: 0,
-    top: 110,
+    top: 60,
   },
   imageAndNameContainer: {
     width: 100,
