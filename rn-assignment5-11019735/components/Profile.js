@@ -16,7 +16,7 @@ export default function Profile() {
 const styles = StyleSheet.create({
   wrapper: {
     top: 40,
-    left: 30,
+    left: 18,
     flexDirection: "row",
     width: "300",
     height: "300",
@@ -26,10 +26,11 @@ const styles = StyleSheet.create({
   },
   welcome: {
     color: "grey",
-    marginBottom: 5,
+    marginBottom: 2,
   },
   userNameContainer: {
     fontFamily: "sans-serif",
     fontSize: 24,
+    fonntWeight: "bold",
   },
 });
