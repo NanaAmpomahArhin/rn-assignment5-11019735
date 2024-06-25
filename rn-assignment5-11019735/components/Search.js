@@ -11,7 +11,7 @@ export default function Search() {
 const styles = StyleSheet.create({
   wrapper: {
     top: 40,
-    left: 130,
+    left: 135,
     width: 50,
     height: 50,
     borderRadius: 25,
